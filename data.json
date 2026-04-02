@@ -1,0 +1,271 @@
+{
+  "users": [
+    {
+      "id": "ac6b4a3d-820d-42a6-b263-3652e8f2f651",
+      "name": "Test Admin",
+      "email": "admin@test.com",
+      "passwordHash": "pbkdf2:b4a585f0d2e5a796456aeeda3bc5e3a8:99eeea317298adb72a09a714b59021c786aa9743eb9f119b9837cf605358529a",
+      "role": "admin",
+      "status": "active",
+      "createdAt": "2026-04-02T08:13:12.178Z"
+    },
+    {
+      "id": "828c2925-2201-4379-8ed7-c58e42399ba8",
+      "name": "Test Analyst",
+      "email": "analyst@test.com",
+      "passwordHash": "pbkdf2:c78bf60fcc7eb9c94ac3ae2aaf556c6a:f20ccfcb32ba69b094fd94d2612e503811765082b633117490ca06f9c30450d3",
+      "role": "analyst",
+      "status": "active",
+      "createdAt": "2026-04-02T08:13:12.211Z"
+    },
+    {
+      "id": "6b0de35a-484c-43bf-9e4d-6f24a00e1d01",
+      "name": "Test Viewer",
+      "email": "viewer@test.com",
+      "passwordHash": "pbkdf2:9654f62fcadbd7f845ef41652da3ce96:61c679afd78bb1d793194c41b4e5df78a83e9da49560459b191ae807415d892f",
+      "role": "viewer",
+      "status": "active",
+      "createdAt": "2026-04-02T08:13:12.251Z"
+    },
+    {
+      "id": "e48da816-e294-4033-84b9-a574b2886ebc",
+      "name": "Alice Admin",
+      "email": "admin@example.com",
+      "passwordHash": "pbkdf2:df61bc27dc6046992db9584317523c57:a4914319cadc5a932136a0508fcdc0ac7d9cf98aa84a9344baa894c3b2b46d77",
+      "role": "admin",
+      "status": "active",
+      "createdAt": "2026-04-02T08:17:30.072Z"
+    },
+    {
+      "id": "3597b2dd-76df-4bfa-895c-99485bd47d8c",
+      "name": "Bob Analyst",
+      "email": "analyst@example.com",
+      "passwordHash": "pbkdf2:48317bda1d95de6bff2f8302ed461a91:970a8b5c26ccad5ceca1e2bb900485db505de7b34e82aa7758f8eea6b8af311a",
+      "role": "analyst",
+      "status": "active",
+      "createdAt": "2026-04-02T08:17:30.099Z"
+    },
+    {
+      "id": "7fde1ca9-83ff-4e57-b4df-ef1bc832fb1c",
+      "name": "Carol Viewer",
+      "email": "viewer@example.com",
+      "passwordHash": "pbkdf2:dae7f06eaea193141c40b5048de27e55:2ffd6652dc709063a3364f9625d2cba6c09f1cf554523925df7f9f43fe201096",
+      "role": "viewer",
+      "status": "active",
+      "createdAt": "2026-04-02T08:17:30.124Z"
+    }
+  ],
+  "records": [
+    {
+      "id": "7e05f641-aeab-475a-8b73-1c2b385ff381",
+      "amount": 9999,
+      "type": "income",
+      "category": "Salary",
+      "date": "2025-03-01",
+      "notes": "Updated",
+      "createdBy": "ac6b4a3d-820d-42a6-b263-3652e8f2f651",
+      "deleted": true,
+      "createdAt": "2026-04-02T08:13:12.608Z",
+      "updatedAt": "2026-04-02T08:13:12.628Z",
+      "deletedAt": "2026-04-02T08:13:12.635Z"
+    },
+    {
+      "id": "ed8d2180-2611-4cab-b331-61ca60aa796b",
+      "amount": 10000,
+      "type": "income",
+      "category": "Salary",
+      "date": "2025-01-10",
+      "notes": "",
+      "createdBy": "ac6b4a3d-820d-42a6-b263-3652e8f2f651",
+      "deleted": false,
+      "createdAt": "2026-04-02T08:13:12.643Z"
+    },
+    {
+      "id": "7f987c43-e196-4fe5-9495-36aeec984fc4",
+      "amount": 3000,
+      "type": "expense",
+      "category": "Rent",
+      "date": "2025-01-15",
+      "notes": "",
+      "createdBy": "ac6b4a3d-820d-42a6-b263-3652e8f2f651",
+      "deleted": false,
+      "createdAt": "2026-04-02T08:13:12.644Z"
+    },
+    {
+      "id": "c983b223-f95f-4465-8875-daedf4fb7377",
+      "amount": 500,
+      "type": "expense",
+      "category": "Food",
+      "date": "2025-02-05",
+      "notes": "",
+      "createdBy": "ac6b4a3d-820d-42a6-b263-3652e8f2f651",
+      "deleted": false,
+      "createdAt": "2026-04-02T08:13:12.644Z"
+    },
+    {
+      "id": "54d99ef4-075b-4ad3-adf7-f26b6c758bbd",
+      "amount": 120000,
+      "type": "income",
+      "category": "Salary",
+      "date": "2025-01-05",
+      "notes": "January salary",
+      "createdBy": "e48da816-e294-4033-84b9-a574b2886ebc",
+      "deleted": false,
+      "createdAt": "2026-04-02T08:17:30.124Z"
+    },
+    {
+      "id": "b9b98d3d-daf9-49e5-8232-36dc4333a4d5",
+      "amount": 8500,
+      "type": "expense",
+      "category": "Rent",
+      "date": "2025-01-07",
+      "notes": "Monthly rent",
+      "createdBy": "e48da816-e294-4033-84b9-a574b2886ebc",
+      "deleted": false,
+      "createdAt": "2026-04-02T08:17:30.125Z"
+    },
+    {
+      "id": "1a3f42be-5448-4a4e-baef-2789a83aa2b7",
+      "amount": 3200,
+      "type": "expense",
+      "category": "Utilities",
+      "date": "2025-01-12",
+      "notes": "Electric & water",
+      "createdBy": "e48da816-e294-4033-84b9-a574b2886ebc",
+      "deleted": false,
+      "createdAt": "2026-04-02T08:17:30.125Z"
+    },
+    {
+      "id": "6ed4de75-0f2c-4979-9bc3-f0a310d36c89",
+      "amount": 45000,
+      "type": "income",
+      "category": "Freelance",
+      "date": "2025-01-20",
+      "notes": "UI project payment",
+      "createdBy": "e48da816-e294-4033-84b9-a574b2886ebc",
+      "deleted": false,
+      "createdAt": "2026-04-02T08:17:30.125Z"
+    },
+    {
+      "id": "450db4ef-c9fe-48c7-9f00-e94fa509898d",
+      "amount": 1500,
+      "type": "expense",
+      "category": "Food",
+      "date": "2025-01-25",
+      "notes": "Groceries",
+      "createdBy": "e48da816-e294-4033-84b9-a574b2886ebc",
+      "deleted": false,
+      "createdAt": "2026-04-02T08:17:30.126Z"
+    },
+    {
+      "id": "4d3cd725-4685-43f7-865a-cc860566c5de",
+      "amount": 120000,
+      "type": "income",
+      "category": "Salary",
+      "date": "2025-02-05",
+      "notes": "February salary",
+      "createdBy": "e48da816-e294-4033-84b9-a574b2886ebc",
+      "deleted": false,
+      "createdAt": "2026-04-02T08:17:30.126Z"
+    },
+    {
+      "id": "0f1110d6-a767-418a-93b5-313b9c7df8ad",
+      "amount": 8500,
+      "type": "expense",
+      "category": "Rent",
+      "date": "2025-02-07",
+      "notes": "",
+      "createdBy": "e48da816-e294-4033-84b9-a574b2886ebc",
+      "deleted": false,
+      "createdAt": "2026-04-02T08:17:30.126Z"
+    },
+    {
+      "id": "a786daf3-262e-4fa1-b63b-08066ee1d3a3",
+      "amount": 12000,
+      "type": "expense",
+      "category": "Travel",
+      "date": "2025-02-14",
+      "notes": "Client visit flights",
+      "createdBy": "e48da816-e294-4033-84b9-a574b2886ebc",
+      "deleted": false,
+      "createdAt": "2026-04-02T08:17:30.127Z"
+    },
+    {
+      "id": "46aff3de-9f4b-4e53-9b44-b65df827267f",
+      "amount": 6000,
+      "type": "expense",
+      "category": "Software",
+      "date": "2025-02-20",
+      "notes": "Annual subscriptions",
+      "createdBy": "e48da816-e294-4033-84b9-a574b2886ebc",
+      "deleted": false,
+      "createdAt": "2026-04-02T08:17:30.127Z"
+    },
+    {
+      "id": "6e35846b-264e-4b2a-959a-a24182accd0c",
+      "amount": 20000,
+      "type": "income",
+      "category": "Freelance",
+      "date": "2025-02-28",
+      "notes": "Logo design project",
+      "createdBy": "e48da816-e294-4033-84b9-a574b2886ebc",
+      "deleted": false,
+      "createdAt": "2026-04-02T08:17:30.127Z"
+    },
+    {
+      "id": "1233a562-e982-4cc3-8e1b-0bda8e786fee",
+      "amount": 120000,
+      "type": "income",
+      "category": "Salary",
+      "date": "2025-03-05",
+      "notes": "",
+      "createdBy": "e48da816-e294-4033-84b9-a574b2886ebc",
+      "deleted": false,
+      "createdAt": "2026-04-02T08:17:30.127Z"
+    },
+    {
+      "id": "d793c6a7-d828-4503-b5ed-3f5a825d992d",
+      "amount": 8500,
+      "type": "expense",
+      "category": "Rent",
+      "date": "2025-03-07",
+      "notes": "",
+      "createdBy": "e48da816-e294-4033-84b9-a574b2886ebc",
+      "deleted": false,
+      "createdAt": "2026-04-02T08:17:30.128Z"
+    },
+    {
+      "id": "79ea6031-8b21-45c1-bb8d-fdfc676b075b",
+      "amount": 4800,
+      "type": "expense",
+      "category": "Food",
+      "date": "2025-03-15",
+      "notes": "",
+      "createdBy": "e48da816-e294-4033-84b9-a574b2886ebc",
+      "deleted": false,
+      "createdAt": "2026-04-02T08:17:30.128Z"
+    },
+    {
+      "id": "bba78856-4414-412e-8ef7-5242f35cc6b1",
+      "amount": 9500,
+      "type": "expense",
+      "category": "Equipment",
+      "date": "2025-03-22",
+      "notes": "New keyboard + monitor",
+      "createdBy": "e48da816-e294-4033-84b9-a574b2886ebc",
+      "deleted": false,
+      "createdAt": "2026-04-02T08:17:30.128Z"
+    },
+    {
+      "id": "8257b218-2fff-4cc6-87e2-7736b6b79502",
+      "amount": 60000,
+      "type": "income",
+      "category": "Consulting",
+      "date": "2025-03-30",
+      "notes": "Q1 consulting fee",
+      "createdBy": "e48da816-e294-4033-84b9-a574b2886ebc",
+      "deleted": false,
+      "createdAt": "2026-04-02T08:17:30.128Z"
+    }
+  ]
+}
