@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finance API Frontend</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .container { max-width: 800px; margin: 0 auto; }
+        .login-form { margin-bottom: 30px; padding: 20px; border: 1px solid #ccc; border-radius: 5px; }
+        .section { margin-bottom: 30px; padding: 20px; border: 1px solid #ccc; border-radius: 5px; }
+        input, button { margin: 5px; padding: 8px; }
+        button { background: #007bff; color: white; border: none; cursor: pointer; }
+        button:hover { background: #0056b3; }
+        .hidden { display: none; }
+        .error { color: red; }
+        .success { color: green; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Finance API Frontend</h1>
+
+        <!-- Login Section -->
+        <div class="login-form">
+            <h2>Login</h2>
+            <input type="email" id="email" placeholder="Email" value="admin@example.com">
+            <input type="password" id="password" placeholder="Password" value="admin123">
+            <button onclick="login()">Login</button>
+            <div id="login-status"></div>
+        </div>
+
+        <!-- Authenticated Sections -->
+        <div id="authenticated" class="hidden">
+            <div class="section">
+                <h2>Users</h2>
+                <button onclick="getUsers()">Load Users</button>
+                <div id="users-list"></div>
+            </div>
+
+            <div class="section">
+                <h2>Financial Records</h2>
+                <button onclick="getRecords()">Load Records</button>
+                <div id="records-list"></div>
+            </div>
+
+            <div class="section">
+                <h2>Dashboard Summary</h2>
+                <button onclick="getDashboard()">Load Summary</button>
+                <div id="dashboard-data"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let token = null;
+
+        async function apiRequest(url, options = {}) {
+            const headers = { 'Content-Type': 'application/json' };
+            if (token) headers['Authorization'] = `Bearer ${token}`;
+
+            try {
+                console.log('Making request to:', url, 'with token:', !!token);
+                const response = await fetch(`http://localhost:3000${url}`, {
+                    ...options,
+                    headers: { ...headers, ...options.headers }
+                });
+                console.log('Response status:', response.status);
+
+                const data = await response.json();
+                console.log('Response data:', data);
+                return { response, data };
+            } catch (error) {
+                console.error('API Error:', error);
+                return { response: null, data: { success: false, error: { message: 'Network error: ' + error.message } } };
+            }
+        }
+
+        async function login() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            const { data } = await apiRequest('/auth/login', {
+                method: 'POST',
+                body: JSON.stringify({ email, password })
+            });
+
+            const status = document.getElementById('login-status');
+            if (data.success) {
+                token = data.data.token;
+                status.innerHTML = '<span class="success">Login successful!</span>';
+                document.getElementById('authenticated').classList.remove('hidden');
+            } else {
+                status.innerHTML = `<span class="error">${data.error.message}</span>`;
+            }
+        }
+
+        async function getUsers() {
+            const { data } = await apiRequest('/users');
+            const container = document.getElementById('users-list');
+
+            if (data.success) {
+                const users = data.data.users;
+                container.innerHTML = `
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Role</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${users.map(user => `
+                                <tr>
+                                    <td>${user.name}</td>
+                                    <td>${user.email}</td>
+                                    <td>${user.role}</td>
+                                    <td>${user.status}</td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                `;
+            } else {
+                container.innerHTML = `<span class="error">${data.error ? data.error.message : 'Unknown error'}</span>`;
+                alert('Error loading users: ' + (data.error ? data.error.message : 'Unknown error'));
+            }
+        }
+
+        async function getRecords() {
+            const { data } = await apiRequest('/records');
+            const container = document.getElementById('records-list');
+
+            if (data.success) {
+                const records = data.data.items;
+                container.innerHTML = `
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Description</th>
+                                <th>Amount</th>
+                                <th>Type</th>
+                                <th>Category</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${records.map(record => `
+                                <tr>
+                                    <td>${record.description || record.notes || 'N/A'}</td>
+                                    <td>$${record.amount}</td>
+                                    <td>${record.type}</td>
+                                    <td>${record.category}</td>
+                                    <td>${new Date(record.date).toLocaleDateString()}</td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                `;
+            } else {
+                container.innerHTML = `<span class="error">${data.error ? data.error.message : 'Unknown error'}</span>`;
+                alert('Error loading records: ' + (data.error ? data.error.message : 'Unknown error'));
+            }
+        }
+
+        async function getDashboard() {
+            const { data } = await apiRequest('/dashboard/summary');
+            const container = document.getElementById('dashboard-data');
+
+            if (data.success) {
+                const summary = data.data;
+                container.innerHTML = `
+                    <h3>Summary</h3>
+                    <p><strong>Total Income:</strong> $${summary.totalIncome}</p>
+                    <p><strong>Total Expenses:</strong> $${summary.totalExpenses}</p>
+                    <p><strong>Net Balance:</strong> $${summary.netBalance}</p>
+                    <p><strong>Transaction Count:</strong> ${summary.transactionCount}</p>
+                `;
+            } else {
+                container.innerHTML = `<span class="error">${data.error.message}</span>`;
+            }
+        }
+    </script>
+</body>
+</html>
